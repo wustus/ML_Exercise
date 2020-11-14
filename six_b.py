@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 from urllib.parse import urlsplit
-from re import compile
+from re import compile, findall
 from itertools import chain
 
 with open("sample.html") as fp:
@@ -128,6 +128,10 @@ def number_int_ext_links(soup, base=None):
         },
     }"""
 
+def number_of_tokens(soup, token, i=0):
+    file_text = soup.prettify()
+    return file_text.count(token)
+    
 
 print(number_int_ext_links(soup))
 
@@ -136,3 +140,5 @@ print(number_external_src(soup))
 print(len_text(soup))
 
 print(inline_style(soup))
+
+print(number_of_tokens(soup, " "))
